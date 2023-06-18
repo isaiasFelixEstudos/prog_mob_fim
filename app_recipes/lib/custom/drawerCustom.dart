@@ -54,18 +54,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
           Card(
             child: ListTile(
               leading: Icon(
-                Icons.food_bank_sharp,
-                color: Colors.red,
-              ),
-              title: Text('Culianrias'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/culianrias');
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(
                 Icons.logout_rounded,
                 color: Colors.red,
               ),

@@ -37,7 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.library_books,
+              Icons.home,
+              color: Colors.red,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.food_bank_sharp,
               color: Colors.red,
             ),
             label: 'Culinarias',
@@ -48,13 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.red,
             ),
             label: 'Favoritos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark_add,
-              color: Colors.red,
-            ),
-            label: 'Receitas não Favoritas',
           ),
         ],
       ),
