@@ -42,13 +42,18 @@ Future<List<dynamic>> buscaCategorias() async {
   }
 }
 
-Future<List<dynamic>> fetchRecipesByCategory(String category) async {
+Future<List<dynamic>> buscarReceitasPorCategoria(String category) async {
+  // variavel que passa url da api com parametro
   final response = await http.get(Uri.parse(
       'https://www.themealdb.com/api/json/v1/1/filter.php?c=$category'));
+  // condição, se o retorno for 200 ele pega a receita
   if (response.statusCode == 200) {
+    // trata os dados e guarda como json
     final data = jsonDecode(response.body);
+    //  retorna somente a receita do json
     return data['meals'];
   } else {
+    // em caso de erro ele volta isso
     throw Exception('Falha ao carregar as receitas da categoria $category');
   }
 }
