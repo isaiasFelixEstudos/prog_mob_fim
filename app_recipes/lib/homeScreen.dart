@@ -23,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
         index: _paginaSelecionada,
         children: [
           HomeApp(),
-          //FavoritosApp(),
-          //NaoFavoritosApp(),
+          PgCulinaria(),
+          PgFavoritos(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
