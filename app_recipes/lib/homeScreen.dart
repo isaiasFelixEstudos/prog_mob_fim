@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:app_recipes/custom/appBarCustom.dart';
 import 'package:app_recipes/custom/drawerCustom.dart';
-//import 'package:app_recipes/pgHomeScreen/homeapp.dart';
-//import 'package:app_recipes/pgHomeScreen/favoritosapp.dart';
-//import 'package:app_recipes/pgHomeScreen/naofavoritosapp.dart';
+import 'paginasHomeScreen/homeApp.dart';
+import 'paginasHomeScreen/culinarias.dart';
+import 'paginasHomeScreen/favoritos.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: IndexedStack(
         index: _paginaSelecionada,
         children: [
-          //HomeApp(),
+          HomeApp(),
           //FavoritosApp(),
           //NaoFavoritosApp(),
         ],
