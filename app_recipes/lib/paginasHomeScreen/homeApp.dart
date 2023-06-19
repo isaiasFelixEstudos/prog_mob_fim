@@ -20,7 +20,7 @@ class _HomeAppState extends State<HomeApp> {
             Align(
               alignment: Alignment.topLeft,
               child: Container(
-                height: 70, // Defina a altura que você quiser aqui
+                height: 70,
                 child: WidgetSlider(),
               ),
             ),
