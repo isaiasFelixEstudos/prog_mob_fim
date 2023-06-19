@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:get/get.dart';
-//import 'package:projeto_final/paginas/login.dart';
+import 'package:get/get.dart';
+import 'package:app_recipes/paginas/login.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
               title: Text('Sair'),
               onTap: () {
-                //Get.off(Login());
+                Get.off(Login());
               },
             ),
           ),

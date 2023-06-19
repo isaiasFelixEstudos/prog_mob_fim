@@ -1,26 +1,53 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/rendering.dart';
+import 'dart:async';
 
-class TelaDeLogin extends StatefulWidget {
-  const TelaDeLogin({Key? key}) : super(key: key);
+class CadastroUser extends StatefulWidget {
+  const CadastroUser({Key? key}) : super(key: key);
 
   @override
-  State<TelaDeLogin> createState() => _TelaDeLoginState();
+  State<CadastroUser> createState() => _CadastroUserState();
 }
 
-class _TelaDeLoginState extends State<TelaDeLogin> {
+class _CadastroUserState extends State<CadastroUser> {
   final _formkey = GlobalKey<FormState>();
   //bool _emailValido = false;
   bool _formValido = false;
   TextEditingController _emailvalido = TextEditingController();
-
   TextEditingController _senhavalida = TextEditingController();
+  TextEditingController _nome = TextEditingController();
 
   void _validacaoFormulario() {
     _formkey.currentState?.validate();
   }
 
+  /*
+  final db = FirebaseFirestore.instance;
+  Future<void> AddUser() async {
+    final livro = <String, dynamic>{"nome": "${_nome.text}"};
+    db.collection('usuarios').add(livro).then(
+          (DocumentReference doc) =>
+              print('DocumentSnapshot added with ID: ${doc.id}'),
+        );
+  }
+
+  Future<void> cadastrarBase() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailvalido.text, password: _senhavalida.text);
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          Timer(Duration(seconds: 2), () {
+            Navigator.of(context).pop();
+          });
+          return AlertDialog(
+            content: Text('Usuario Cadastrado com Sucesso'),
+          );
+        });
+  }
+*/
   String _validarEntrada(String? mensagem) {
     if (mensagem == null || mensagem.isEmpty) {
       return 'Preencha o campo';
@@ -28,43 +55,13 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
       return 'Campo preenchido';
     }
   }
-  /*
-  Future<void> logarBase() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailvalido.text, password: _senhavalida.text);
-    Navigator.of(context).pushNamed('/home');
-  }
-
-  Future<void> logarGoogle() async {
-    final GoogleSignIn googleSignIn = await GoogleSignIn();
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-    print(googleAuth?.idToken); // should not be null or empty
-    print(googleAuth?.accessToken); // should not be null or empty
-
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    final UserCredential authResult =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    final User? user = authResult.user;
-
-    //customMaterialBanner(context, 'Logado com sucesso!', Colors.green);
-    if (user != null) {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
-    }
-  }
-  */
 
   @override
   void initState() {
     super.initState();
     _emailvalido.addListener(_validacaoFormulario);
     _senhavalida.addListener(_validacaoFormulario);
+    _nome.addListener(_validacaoFormulario);
   }
 
   @override
@@ -72,6 +69,7 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
     super.dispose();
     _emailvalido.removeListener(_validacaoFormulario);
     _senhavalida.removeListener(_validacaoFormulario);
+    _nome.removeListener(_validacaoFormulario);
   }
 
   @override
@@ -84,14 +82,14 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
             child: Column(
               children: [
                 Icon(
-                  Icons.account_circle,
+                  Icons.supervised_user_circle,
                   size: 100,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Center(
-                  child: Text('Login App'),
+                  child: Text('Cadastro de usuário'),
                 ),
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -122,10 +120,30 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                     errorStyle: TextStyle(
                         color: _formValido ? Colors.blue : Colors.red),
                     errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: _formValido ? Colors.blue : Colors.red),
-                    ),
+                        borderSide: BorderSide(
+                            color: _formValido ? Colors.blue : Colors.red)),
                     labelText: "Senha",
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      _formValido = value.isNotEmpty;
+                    });
+                  },
+                  validator: _validarEntrada,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: _nome,
+                  decoration: InputDecoration(
+                    errorStyle: TextStyle(
+                        color: _formValido ? Colors.blue : Colors.red),
+                    errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: _formValido ? Colors.blue : Colors.red)),
+                    labelText: "Nome",
                   ),
                   onChanged: (value) {
                     setState(() {
@@ -139,18 +157,10 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    //logarBase();
+                    //AddUser();
+                    //cadastrarBase();
                   },
-                  child: Text('Login'),
-                ),
-                SizedBox(
-                  height: 2,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/cadUser');
-                  },
-                  child: Text('Cadastrar Usuário'),
+                  child: Text('Cadastrar'),
                 ),
               ],
             ),
