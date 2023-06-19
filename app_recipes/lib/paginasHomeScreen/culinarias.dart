@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_recipes/auxiliar/aux_culinaria.dart';
 
 class PgCulinaria extends StatefulWidget {
   const PgCulinaria({super.key});
@@ -11,9 +12,7 @@ class _PgCulinariaState extends State<PgCulinaria> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [],
-      ),
+      body: EstruturaCulinarias(),
     );
   }
 }
