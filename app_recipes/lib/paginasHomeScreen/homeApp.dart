@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_recipes/auxiliar/aux_slide.dart';
 
 class HomeApp extends StatefulWidget {
   const HomeApp({super.key});
@@ -12,7 +13,13 @@ class _HomeAppState extends State<HomeApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        children: [
+          Row(
+            children: [
+              //SliderCategorias(),
+            ],
+          )
+        ],
       ),
     );
   }
