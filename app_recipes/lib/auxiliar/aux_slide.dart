@@ -17,16 +17,19 @@ class _WidgetSliderState extends State<WidgetSlider> {
         itemCount: cuisines.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return CircleAvatar(
-            child: Text(cuisines[index].toString()),
+          return Column(
+            children: [
+              CircleAvatar(
+                child: Text(cuisines[index].toString()),
+              ),
+              SizedBox(
+                height: 1,
+              ),
+              Text(cuisines[index].toString()),
+            ],
           );
         },
       ),
     );
   }
 }
-/*
-ListTile(
-                title: Text(cuisines[index].toString()),
-              ),
-*/

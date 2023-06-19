@@ -12,12 +12,20 @@ class _HomeAppState extends State<HomeApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: WidgetSlider(),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                height: 70, // Defina a altura que você quiser aqui
+                child: WidgetSlider(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
