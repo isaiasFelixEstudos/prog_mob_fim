@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app_recipes/auxiliar/aux_slide.dart';
 
 class HomeApp extends StatefulWidget {
-  const HomeApp({super.key});
+  const HomeApp({Key? key});
 
   @override
   State<HomeApp> createState() => _HomeAppState();
@@ -14,11 +14,9 @@ class _HomeAppState extends State<HomeApp> {
     return Scaffold(
       body: Column(
         children: [
-          Row(
-            children: [
-              //SliderCategorias(),
-            ],
-          )
+          Expanded(
+            child: WidgetSlider(),
+          ),
         ],
       ),
     );
