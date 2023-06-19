@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_recipes/custom/appBarCustom.dart';
 import 'package:app_recipes/custom/drawerCustom.dart';
+import 'package:app_recipes/auxiliar/aux_pesquisa.dart';
 
 class PgPesquisa extends StatefulWidget {
   const PgPesquisa({super.key});
@@ -15,9 +16,7 @@ class _PgPesquisaState extends State<PgPesquisa> {
     return Scaffold(
       appBar: CustomAppBar(title: 'Pesquisar Receita'),
       drawer: CustomDrawer(),
-      body: Column(
-        children: [],
-      ),
+      body: RecipeSearch(),
     );
   }
 }
