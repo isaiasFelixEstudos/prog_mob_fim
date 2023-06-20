@@ -14,10 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _paginaSelecionada = 0;
+  List<String> _titulos = ['Home', 'Culinarias', 'Favoritos'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Home Screen'),
+      appBar: CustomAppBar(title: '${_titulos[_paginaSelecionada]}'),
       drawer: CustomDrawer(),
       body: IndexedStack(
         index: _paginaSelecionada,
