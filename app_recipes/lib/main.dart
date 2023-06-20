@@ -6,8 +6,15 @@ import 'splash.dart';
 import 'paginas/login.dart';
 import 'paginas/perfil.dart';
 import 'paginas/cadastrarusuario.dart';
+// firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',

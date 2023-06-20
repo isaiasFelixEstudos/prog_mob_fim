@@ -55,9 +55,7 @@ class _RecipesPageState extends State<RecipesPage> {
                           child: Text(truncatedMealName),
                         ),
                         InkWell(
-                          onTap: () {
-                            print('CircleAvatar pressionado!');
-                          },
+                          onTap: () {},
                           child: CircleAvatar(
                             child: Icon(
                               Icons.star,

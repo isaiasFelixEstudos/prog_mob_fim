@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'dart:async';
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class EstruturaUpdateCadUser extends StatefulWidget {
   const EstruturaUpdateCadUser({super.key});
@@ -9,7 +10,6 @@ class EstruturaUpdateCadUser extends StatefulWidget {
 }
 
 class _EstruturaUpdateCadUserState extends State<EstruturaUpdateCadUser> {
-  /*
   Future<void> atualizarUsuarioAuthFirebase(
       context, String email, String displayName) async {
     final user = await FirebaseAuth.instance.currentUser;
@@ -18,7 +18,7 @@ class _EstruturaUpdateCadUserState extends State<EstruturaUpdateCadUser> {
       user.updateEmail(email);
     }
   }
-  */
+
   final _formkey = GlobalKey<FormState>();
   //bool _emailValido = false;
   bool _formValido = false;
@@ -102,7 +102,6 @@ class _EstruturaUpdateCadUserState extends State<EstruturaUpdateCadUser> {
             ),
             ElevatedButton(
               onPressed: () {
-                /*
                 if (_formkey.currentState!.validate()) {
                   atualizarUsuarioAuthFirebase(
                       context, _emailvalido.text, _nomevalido.text);
@@ -116,7 +115,7 @@ class _EstruturaUpdateCadUserState extends State<EstruturaUpdateCadUser> {
                           content: Text('Cadastro atualizado com sucesso'),
                         );
                       });
-                }*/
+                }
               },
               child: Text('Atualizar Cadastro'),
             ),
