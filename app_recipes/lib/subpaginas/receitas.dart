@@ -43,9 +43,31 @@ class _RecipesPageState extends State<RecipesPage> {
               itemCount: _meals.length,
               itemBuilder: (context, index) {
                 final meal = _meals[index];
+                final truncatedMealName = meal['strMeal'].length > 25
+                    ? '${meal['strMeal'].substring(0, 25)}...'
+                    : meal['strMeal'];
                 return Card(
                   child: ListTile(
-                    title: Text(meal['strMeal']),
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(truncatedMealName),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            print('CircleAvatar pressionado!');
+                          },
+                          child: CircleAvatar(
+                            child: Icon(
+                              Icons.star,
+                              color: Colors.red,
+                            ),
+                            backgroundColor: Colors.transparent,
+                          ),
+                        ),
+                      ],
+                    ),
                     leading: Image.network(meal['strMealThumb']),
                     onTap: () {
                       Navigator.push(
