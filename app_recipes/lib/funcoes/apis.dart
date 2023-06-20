@@ -93,26 +93,3 @@ class CuisineService {
     }
   }
 }
-
-Future BuscarReceitas() async {
-  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-  for (var letter in alphabet.split('')) {
-    var url = Uri.parse(
-        'https://www.themealdb.com/api/json/v1/1/search.php?f=$letter');
-
-    var response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      var data = json.decode(response.body);
-      var recipes = data['meals'];
-
-      for (var recipe in recipes) {
-        var recipeName = recipe['strMeal'];
-        print(recipeName);
-      }
-    } else {
-      print('Falha na solicitação. Código de status: ${response.statusCode}');
-    }
-  }
-}
