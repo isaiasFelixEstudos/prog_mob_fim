@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:app_recipes/funcoes/apis.dart';
+import 'package:app_recipes/subpaginas/receitas.dart';
 
 class WidgetSlider extends StatefulWidget {
   const WidgetSlider({Key? key});
@@ -8,25 +10,37 @@ class WidgetSlider extends StatefulWidget {
 }
 
 class _WidgetSliderState extends State<WidgetSlider> {
-  List<int> cuisines = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  List<dynamic> categories = [];
+  void initState() {
+    super.initState();
+    buscaCategorias().then((result) {
+      setState(() {
+        categories = result;
+      });
+    }).catchError((error) {
+      print('Erro ao carregar as categorias de receitas: $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: cuisines.length,
-        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CircleAvatar(
-                child: Text(cuisines[index].toString()),
-              ),
-              SizedBox(
-                height: 1,
-              ),
-              Text(cuisines[index].toString()),
-            ],
+          return Card(
+            child: ListTile(
+                title: Text(categories[index]['strCategory']),
+                leading: Image.network(categories[index]['strCategoryThumb']),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecipesPage(
+                          category: categories[index]['strCategory']),
+                    ),
+                  );
+                }),
           );
         },
       ),
