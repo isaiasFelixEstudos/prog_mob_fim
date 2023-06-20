@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_recipes/auxiliar/aux_slide.dart';
+import 'package:app_recipes/auxiliar/aux_categorias.dart';
 
 class HomeApp extends StatefulWidget {
   const HomeApp({Key? key});
